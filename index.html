@@ -175,34 +175,44 @@
       margin-bottom: 9px;
       width:fit-content;
     }
-    /* Interactive cards */
-    .card-row {
+    /* Website Links Buttons */
+    .website-links-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 22px;
       justify-content: center;
       margin: 40px 0 10px 0;
     }
-    .site-card {
-      background: rgba(255,255,255,0.085);
+    .website-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      max-width: 330px;
+      padding: 1.2em 1.1em 1.1em 1.1em;
+      color: var(--dark);
+      font-size: 1.11rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), var(--info));
+      border: none;
       border-radius: 14px;
       box-shadow: 0 2px 16px #0001;
-      min-width: 210px; max-width: 330px;
-      padding: 1.2em 1.1em 1.1em 1.1em;
-      color: var(--light);
-      font-size: 1.09rem;
-      display: flex; flex-direction: column; align-items: flex-start;
-      transition: box-shadow 0.2s, transform 0.15s;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.15s, background 0.2s, color 0.2s;
       cursor: pointer;
-      min-height: 110px;
-      border: 2px solid transparent;
+      min-height: 70px;
+      margin: 0;
+      outline: none;
+      text-align: center;
+      letter-spacing: 0.7px;
+      position: relative;
     }
-    .site-card:hover {
+    .website-link-btn:hover {
       box-shadow: 0 8px 30px #0003;
-      border: 2px solid var(--accent);
+      background: linear-gradient(90deg, var(--danger), var(--accent));
+      color: var(--light);
       transform: translateY(-6px) scale(1.04);
     }
-    .site-card i {font-size: 1.3em;margin-bottom:3px;}
     /* Socials */
     .social-row {
       display: flex; gap: 18px; margin: 38px 0 0 0; justify-content: center; flex-wrap: wrap;
@@ -242,9 +252,9 @@
       nav {padding: 14px 12px;}
       .hero-title {font-size:2.1rem;}
       .info-row{flex-direction:column;}
-      .card-row{flex-direction:column;}
+      .website-links-row{flex-direction:column;}
       .info-card{min-width: 90vw;max-width:97vw;}
-      .site-card{min-width: 90vw;max-width:97vw;}
+      .website-link-btn{min-width: 90vw;max-width:97vw;}
     }
     @media (max-width: 600px) {
       nav {flex-direction: column; gap: 8px;}
@@ -316,23 +326,28 @@
   <section class="quote-carousel">
     <div class="quote-box" id="quote-box">Inspiring your journey...</div>
   </section>
-  <!-- Interactive Cards -->
-  <section class="card-row" id="projects">
-    <div class="site-card"><i class="fa fa-rocket"></i> <strong>Dashboard</strong><br>See your activities, quick stats, and updates at a glance.</div>
-    <div class="site-card"><i class="fa fa-folder-open"></i> <strong>Projects</strong><br>Manage, view, and customize your tech projects.</div>
-    <div class="site-card"><i class="fa fa-newspaper"></i> <strong>News</strong><br>Stay updated with the latest tech news and trends.</div>
-    <div class="site-card"><i class="fa fa-comments"></i> <strong>Chat Room</strong><br>Connect & collaborate in real-time with your friends.</div>
-    <div class="site-card"><i class="fa fa-website">.https://pkdriller-business.vercel.app/</i> <strong>Fun Zone</strong><br>Enjoy tech games, quizzes, and brain teasers!</div>
-    <div class="site-card"><i class="fa fa-cogs"></i> <strong>Settings</strong><br>Personalize your hub experience.</div>
+  <!-- Website Links Buttons (Replacing Interactive Cards) -->
+  <section class="website-links-row" id="projects">
+    <a href="https://your-business-website.com" class="website-link-btn" target="_blank"><i class="fa fa-briefcase" style="margin-right:10px;"></i> BUSINESS WEBSITE</a>
+    <a href="https://your-apis-website.com" class="website-link-btn" target="_blank"><i class="fa fa-plug" style="margin-right:10px;"></i> APIS WEBSITE</a>
+    <a href="https://your-bots-website.com" class="website-link-btn" target="_blank"><i class="fa fa-robot" style="margin-right:10px;"></i> BOTS WEBSITE</a>
+    <a href="https://your-downloaders-website.com" class="website-link-btn" target="_blank"><i class="fa fa-download" style="margin-right:10px;"></i> DOWNLOADERS WEBSITE</a>
+    <a href="https://your-shop-website.com" class="website-link-btn" target="_blank"><i class="fa fa-shopping-cart" style="margin-right:10px;"></i> SHOP WEBSITE</a>
+    <a href="https://your-blog-website.com" class="website-link-btn" target="_blank"><i class="fa fa-blog" style="margin-right:10px;"></i> BLOG WEBSITE</a>
+    <a href="https://your-portfolio-website.com" class="website-link-btn" target="_blank"><i class="fa fa-id-card" style="margin-right:10px;"></i> PORTFOLIO WEBSITE</a>
+    <a href="https://your-tools-website.com" class="website-link-btn" target="_blank"><i class="fa fa-tools" style="margin-right:10px;"></i> TOOLS WEBSITE</a>
+    <a href="https://your-forum-website.com" class="website-link-btn" target="_blank"><i class="fa fa-comments" style="margin-right:10px;"></i> FORUM WEBSITE</a>
   </section>
   <!-- Social Links -->
   <section class="social-row">
     <a class="social-btn" style="background:linear-gradient(135deg,#4267B2,#60a5fa);" href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a class="social-btn" style="background:linear-gradient(135deg,#00acee,#2dd4bf);" href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
     <a class="social-btn" style="background:linear-gradient(135deg,#e1306c,#fb7185);" href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
     <a class="social-btn" style="background:linear-gradient(135deg,#0077b5,#5eead4);" href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     <a class="social-btn" style="background:linear-gradient(135deg,#25d366,#10b981);" href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a class="social-btn" style="background:linear-gradient(135deg,#ff0000,#fb7185);" href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
     <a class="social-btn" style="background:linear-gradient(135deg,#333,#60a5fa);" href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a class="social-btn" style="background:linear-gradient(135deg,#7289da,#60a5fa);" href="https://discord.com" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
   </section>
   <!-- Music player -->
   <div class="music-player" id="music-player">
@@ -476,4 +491,4 @@
     animate();
   </script>
 </body>
-</html>
+  </html>
