@@ -1,490 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PK-DRILLER TECH HUB</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Google Fonts and Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #232a34;
-      --secondary: #1a202c;
-      --accent: #5eead4;
-      --danger: #fb7185;
-      --warning: #fbbf24;
-      --info: #60a5fa;
-      --light: #f7fafc;
-      --dark: #111827;
-      --gradient: linear-gradient(120deg, #0f172a 0%, #5eead4 100%);
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      min-height: 100vh;
-      background: var(--primary);
-      color: var(--light);
-      overflow-x: hidden;
-    }
-    body {
-      background: var(--gradient);
-    }
-    /* Navbar */
-    nav {
-      width: 100vw;
-      background: rgba(17,24,39,0.92);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 48px;
-      position: sticky; top:0; z-index:20;
-      box-shadow: 0 2px 18px #0003;
-    }
-    nav .brand {
-      font-size: 2.1rem;
-      color: var(--accent);
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      display: flex; align-items: center; gap: 13px;
-    }
-    nav .menu-toggle {
-      display: none;
-      background: none; border: none;
-      color: var(--accent); font-size: 2.1rem; cursor: pointer;
-    }
-    nav .nav-links {
-      display: flex; gap: 2.2em;
-      align-items: center;
-    }
-    nav .nav-links a {
-      color: var(--light);
-      text-decoration: none;
-      font-size: 1.11rem;
-      font-weight: 500;
-      transition: color 0.2s;
-      position: relative;
-    }
-    nav .nav-links a::after {
-      content: "";
-      display: block;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s;
-      border-radius: 5px;
-      margin: 0 auto;
-    }
-    nav .nav-links a:hover {color: var(--accent);}
-    nav .nav-links a:hover::after {width: 80%;}
-    /* Hero */
-    .hero {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      min-height: 340px;
-      margin-top: 30px;
-      text-align: center;
-    }
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      background: linear-gradient(90deg, var(--accent), var(--info), var(--danger));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0 0 16px 0;
-    }
-    .hero-tagline {
-      font-size: 1.3rem;
-      color: var(--light);
-      margin-bottom: 24px;
-      opacity: 0.93;
-    }
-    .hero-btn {
-      font-size: 1.13rem;
-      padding: 12px 38px;
-      border-radius: 30px;
-      border: none;
-      background: linear-gradient(90deg, var(--accent), var(--info));
-      color: var(--dark);
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 3px 16px #0004;
-      margin-top: 12px;
-      transition: background 0.2s, color 0.2s, transform 0.16s;
-    }
-    .hero-btn:hover {
-      background: linear-gradient(90deg, var(--danger), var(--accent));
-      color: var(--light);
-      transform: scale(1.07);
-    }
-    /* Device/User Info */
-    .info-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-      justify-content: center;
-      margin: 60px auto 0 auto;
-      max-width: 900px;
-    }
-    .info-card {
-      background: rgba(255,255,255,0.07);
-      border-radius: 18px;
-      box-shadow: 0 3px 20px #0003;
-      padding: 26px;
-      min-width: 270px;
-      max-width: 330px;
-      flex: 1 1 260px;
-      margin: 0;
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .info-card h3 {
-      margin: 0 0 13px 0;
-      font-size: 1.22rem;
-      color: var(--accent);
-    }
-    .info-list {
-      list-style: none;
-      margin: 0; padding: 0; width: 100%;
-      font-size: 1.07rem;
-    }
-    .info-list li {
-      margin-bottom: 11px;
-      display: flex; align-items: center; gap: 12px;
-      color: var(--light);
-    }
-    .info-list i { color: var(--info);}
-    /* Quotes & Cards */
-    .quote-carousel {
-      display: flex; flex-direction: column; align-items: center;
-      margin: 54px 0 14px 0;
-    }
-    .quote-box {
-      font-size: 1.38rem;
-      font-weight: 600;
-      background: linear-gradient(90deg, var(--accent), var(--danger), var(--info));
-      padding: 17px 30px;
-      border-radius: 15px;
-      color: #232a34;
-      box-shadow: 0 2px 14px #0002;
-      min-width: 230px;
-      min-height: 48px;
-      text-align: center;
-      letter-spacing: 1.1px;
-      transition: background 1s, color 1s;
-      margin-bottom: 9px;
-      width:fit-content;
-    }
-    /* Website Links Buttons */
-    .website-links-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      justify-content: center;
-      margin: 40px 0 10px 0;
-    }
-    .website-link-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 210px;
-      max-width: 330px;
-      padding: 1.2em 1.1em 1.1em 1.1em;
-      color: var(--dark);
-      font-size: 1.11rem;
-      font-weight: 600;
-      background: linear-gradient(90deg, var(--accent), var(--info));
-      border: none;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px #0001;
-      text-decoration: none;
-      transition: box-shadow 0.2s, transform 0.15s, background 0.2s, color 0.2s;
-      cursor: pointer;
-      min-height: 70px;
-      margin: 0;
-      outline: none;
-      text-align: center;
-      letter-spacing: 0.7px;
-      position: relative;
-    }
-    .website-link-btn:hover {
-      box-shadow: 0 8px 30px #0003;
-      background: linear-gradient(90deg, var(--danger), var(--accent));
-      color: var(--light);
-      transform: translateY(-6px) scale(1.04);
-    }
-    /* Socials */
-    .social-row {
-      display: flex; gap: 18px; margin: 38px 0 0 0; justify-content: center; flex-wrap: wrap;
-    }
-    .social-btn {
-      display: flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      font-size: 1.8rem;
-      color: #fff;
-      background: linear-gradient(135deg, var(--accent) 40%, var(--danger) 100%);
-      box-shadow: 0 2px 10px #0003;
-      transition: transform 0.18s, filter 0.18s, background 0.25s;
-      text-decoration: none;
-      border: none;
-    }
-    .social-btn:hover {transform: scale(1.15) rotate(-8deg);filter: brightness(1.13);}
-    /* Music Player */
-    .music-player {
-      position: fixed; bottom: 22px; left: 22px;
-      background: rgba(17,24,39,0.92);
-      border-radius: 17px;
-      padding: 10px 22px 10px 13px;
-      display: flex; align-items: center; gap: 13px;
-      z-index: 50;
-      box-shadow: 0 2px 12px #0005;
-      font-size: 1.13rem;
-    }
-    .music-player button {
-      background: none; border: none; color: var(--accent); font-size: 1.35rem;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .music-player button:hover {color: var(--danger);}
-    /* Responsive */
-    @media (max-width: 900px) {
-      nav {padding: 14px 12px;}
-      .hero-title {font-size:2.1rem;}
-      .info-row{flex-direction:column;}
-      .website-links-row{flex-direction:column;}
-      .info-card{min-width: 90vw;max-width:97vw;}
-      .website-link-btn{min-width: 90vw;max-width:97vw;}
-    }
-    @media (max-width: 600px) {
-      nav {flex-direction: column; gap: 8px;}
-      .nav-links {flex-direction: column; gap: 1em;}
-      .music-player {bottom: 10px; left: 2vw;}
-      .hero {margin-top:10px;}
-    }
-    /* Hide nav links on mobile */
-    @media (max-width: 700px) {
-      nav .nav-links {display:none;}
-      nav .menu-toggle {display:block;}
-      nav .nav-links.mobile-show {display:flex;flex-direction:column;gap:1em; background:rgba(34,42,52,0.98); position:absolute; top:56px; right:20px; border-radius:11px; padding:15px 25px;box-shadow:0 2px 18px #0006;}
-    }
-    /* Animated background */
-    #bg-animation {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.11;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pkdriller - Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --dark: #1e1e2c;
+            --light: #f5f5f7;
+            --secondary: #4a4a4a;
+            --accent: #ff6584;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 10px 20px rgba(255, 101, 132, 0.3);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .projects {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .project-content p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Animated Background Canvas -->
-  <canvas id="bg-animation"></canvas>
-  <!-- Navbar -->
-  <nav>
-    <span class="brand"><i class="fa fa-bolt"></i> PK-DRILLER</span>
-    <button class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button>
-    <div class="nav-links" id="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#news">News</a>
-      <a href="#fun">Fun Zone</a>
-      <a href="#profile">Profile</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-title">Welcome to PK-DRILLER TECH HUB</div>
-    <div class="hero-tagline">Your all-in-one interactive tech space.<br>
-      <span style="color:var(--accent);">Modern. Smart. Fun. 🚀</span></div>
-    <button class="hero-btn" onclick="window.scrollTo({top:document.body.scrollHeight,left:0,behavior:'smooth'})">Explore Now</button>
-  </section>
-  <!-- Info Cards -->
-  <section class="info-row" id="info-row">
-    <div class="info-card">
-      <h3><i class="fa fa-user"></i> User Info</h3>
-      <ul class="info-list">
-        <li><i class="fa fa-user-circle"></i> <span id="user-title">Welcome, Guest!</span></li>
-        <li><i class="fa fa-calendar"></i> <span id="date"></span></li>
-        <li><i class="fa fa-clock"></i> <span id="time"></span></li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h3><i class="fa fa-mobile-alt"></i> Device Info</h3>
-      <ul class="info-list">
-        <li><i class="fa fa-laptop"></i> <span id="device-type">Device: ...</span></li>
-        <li><i class="fa fa-battery-full"></i> <span id="battery">Battery: ...</span></li>
-        <li><i class="fa fa-globe"></i> <span id="ip">IP: ...</span></li>
-        <li><i class="fa fa-map-marker-alt"></i> <span id="city">City: ...</span></li>
-      </ul>
-    </div>
-  </section>
-  <!-- Quotes -->
-  <section class="quote-carousel">
-    <div class="quote-box" id="quote-box">Inspiring your journey...</div>
-  </section>
-  <!-- Website Links Buttons (Replacing Interactive Cards) -->
-  <section class="website-links-row" id="projects">
-    <a href="https://pkdriller-business.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-briefcase" style="margin-right:10px;"></i> BUSINESS WEBSITE</a>
-    <a href="https://pkdriller-apis-three.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-plug" style="margin-right:10px;"></i> APIS WEBSITE</a>
-    <a href="https://nexus-bots-web.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-robot" style="margin-right:10px;"></i> BOTS WEBSITE</a>
-    <a href="https://pkdriller-media-downloader.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-download" style="margin-right:10px;"></i> DOWNLOADERS WEBSITE</a>
-    <a href="https://pk-music-downloader.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-shopping-cart" style="margin-right:10px;"></i> MUSIC DOWNLOADER</a>
-    <a href="https://my-portfolio-sooty-iota-16.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-id-card" style="margin-right:10px;"></i> PORTFOLIO WEBSITE</a>
-    <a href="https://pk-instagram-downloader.vercel.app/" class="website-link-btn" target="_blank"><i class="fa fa-tools" style="margin-right:10px;"></i> INSTA DOWNLOADER</a>
-  </section>
-  <!-- Social Links -->
-  <section class="social-row">
-    <a class="social-btn" style="background:linear-gradient(135deg,#4267B2,#60a5fa);" href=".https://www.facebook.com/profile.php?id=100091580206517" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a class="social-btn" style="background:linear-gradient(135deg,#e1306c,#fb7185);" href="https://www.instagram.com/pk_tech01?igsh=MTM0Y2p3ZHpxMXZraA==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a class="social-btn" style="background:linear-gradient(135deg,#0077b5,#5eead4);" href="https://www.linkedin.com/in/pk-driller-ab54a6347?" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a class="social-btn" style="background:linear-gradient(135deg,#25d366,#10b981);" href="https://wa.me/254794146821" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a class="social-btn" style="background:linear-gradient(135deg,#ff0000,#fb7185);" href="https://www.youtube.com/@Pkdriller" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a class="social-btn" style="background:linear-gradient(135deg,#333,#60a5fa);" href="https://github.com/pkdriller" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-  </section>
-  <!-- Music player -->
-  <div class="music-player" id="music-player">
-    <button id="music-toggle" title="Toggle Music"><i class="fa fa-volume-up"></i></button>
-    <span id="music-status">Music On</span>
-    <audio id="bg-music" loop>
-      <source src="https://files.catbox.moe/93z21l.mp3" type="audio/mp3">
-    </audio>
-  </div>
-  <!-- JS -->
-  <script>
-    // Navbar Responsive
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    menuToggle.onclick = () => navLinks.classList.toggle('mobile-show');
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PK<span>driller</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    // User/Device Info
-    function getDeviceType() {
-      const ua = navigator.userAgent;
-      if (/android/i.test(ua)) return "Android 📱";
-      if (/iPad|iPhone|iPod/.test(ua)) return "iOS 🍏";
-      if (/windows phone/i.test(ua)) return "Windows Phone";
-      if (/windows/i.test(ua)) return "Windows 💻";
-      if (/mac/i.test(ua)) return "Mac 🖥️";
-      if (/linux/i.test(ua)) return "Linux 🐧";
-      return "Unknown Device";
-    }
-    document.getElementById("device-type").innerText = "Device: " + getDeviceType();
-    // User welcome
-    document.getElementById("user-title").innerText = "Welcome, PKDRILLER0!";
+    <section class="hero" id="home">
+        <div class="container">
+            <img src="https://github.com/pkdriller0/NEXUS-XMD-DATA/raw/refs/heads/main/logo/pkdriller.jpg" alt="Pkdriller" class="hero-img">
+            <h1>Hi, I'm Pkdriller</h1>
+            <p>Full Stack Developer & Creator of Innovative Web Applications and WhatsApp Bots</p>
+            <div>
+                <a href="#contact" class="btn">Contact Me</a>
+                <a href="https://github.com/pkdriller" class="btn btn-outline">GitHub</a>
+                <a href="https://wa.me/yourwhatsappchannel" class="btn btn-accent">WhatsApp Channel</a>
+            </div>
+        </div>
+    </section>
 
-    // Battery (optional)
-    if ('getBattery' in navigator) {
-      navigator.getBattery().then(function(battery) {
-        function updateBattery() {
-          let p = Math.round(battery.level*100) + "%";
-          let icon = battery.charging ? "⚡" : "";
-          document.getElementById("battery").innerText = `Battery: ${p} ${icon}`;
-        }
-        updateBattery();
-        battery.addEventListener('levelchange', updateBattery);
-        battery.addEventListener('chargingchange', updateBattery);
-      });
-    } else {
-      document.getElementById("battery").innerText = "Battery: N/A";
-    }
-    // IP/City (optional)
-    fetch('https://ipapi.co/json')
-      .then(res=>res.json()).then(data=>{
-        document.getElementById("ip").innerText = "IP: " + data.ip;
-        document.getElementById("city").innerText = data.city+", "+data.country_name;
-      }).catch(()=>{document.getElementById("ip").innerText="IP: N/A";document.getElementById("city").innerText="City: N/A";});
-    // Date/Time
-    function updateDateTime() {
-      const now = new Date();
-      document.getElementById("date").innerText = now.toLocaleDateString();
-      document.getElementById("time").innerText = now.toLocaleTimeString();
-    }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Explore my collection of web applications and tools designed to make digital life easier</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://i.imgur.com/8ZQZQ9u.png" alt="Instagram Video Downloader" class="project-img">
+                    <div class="project-content">
+                        <h3>Instagram Video Downloader</h3>
+                        <p>Download high-quality videos from Instagram with just a few clicks. Supports posts, reels, and IGTV.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/9QZQZ9u.png" alt="Application Downloader" class="project-img">
+                    <div class="project-content">
+                        <h3>Application Downloader</h3>
+                        <p>Download APK files for Android applications directly from our secure servers.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/7ZQZQ9u.png" alt="Music Downloader" class="project-img">
+                    <div class="project-content">
+                        <h3>Music Downloader</h3>
+                        <p>Download your favorite songs in MP3 format from various platforms.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/6ZQZQ9u.png" alt="Social Media Downloader" class="project-img">
+                    <div class="project-content">
+                        <h3>Social Media Downloader</h3>
+                        <p>Download videos and media from Facebook, TikTok, Instagram and more.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/5ZQZQ9u.png" alt="APIs Website" class="project-img">
+                    <div class="project-content">
+                        <h3>APIs Website</h3>
+                        <p>Collection of useful APIs for developers with comprehensive documentation.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/4ZQZQ9u.png" alt="Nexus-XMD WhatsApp Bot" class="project-img">
+                    <div class="project-content">
+                        <h3>Nexus-XMD WhatsApp Bot</h3>
+                        <p>Advanced WhatsApp bot with multiple features for personal and business use.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                            <a href="#" class="btn btn-outline">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.imgur.com/3ZQZQ9u.png" alt="Nexus-AI WhatsApp Bot" class="project-img">
+                    <div class="project-content">
+                        <h3>Nexus-AI WhatsApp Bot</h3>
+                        <p>AI-powered WhatsApp bot with natural language processing capabilities.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">Visit Website</a>
+                            <a href="#" class="btn btn-outline">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Quotes
-    const quotes = [
-      "Be yourself; everyone else is already taken.",
-      "The best way to get started is to quit talking and begin doing.",
-      "Dream big and dare to fail.",
-      "Success is not in what you have, but who you are.",
-      "Great things never come from comfort zones.",
-      "Stay hungry, stay foolish.",
-      "Believe you can and you’re halfway there.",
-      "Push yourself, because no one else is going to do it for you.",
-      "Don’t watch the clock; do what it does. Keep going.",
-      "It always seems impossible until it’s done.",
-      "Your limitation—it’s only your imagination.",
-      "Work hard in silence, let success make the noise.",
-      "Success doesn’t just find you. You have to go out and get it.",
-      "The harder you work for something, the greater you’ll feel when you achieve it.",
-      "Innovation distinguishes between a leader and a follower. - Steve Jobs"
-    ];
-    function showQuote() {
-      const q = quotes[Math.floor(Math.random()*quotes.length)];
-      document.getElementById("quote-box").innerText = q;
-    }
-    setInterval(showQuote, 2800);
-    window.onload = showQuote;
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know the developer behind these innovative projects</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://i.imgur.com/J6l19xQ.png" alt="About Pkdriller">
+                </div>
+                <div class="about-text">
+                    <h3>Full Stack Developer & Bot Creator</h3>
+                    <p>I'm a passionate developer with expertise in creating web applications and WhatsApp bots that solve real-world problems. My journey in programming started several years ago, and since then I've been constantly learning and building new things.</p>
+                    <p>I specialize in JavaScript, Node.js, Python, and various web technologies. My projects focus on providing value to users through simple yet powerful tools.</p>
+                    
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Web Development</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>WhatsApp Bot Development</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>API Development</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>UI/UX Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Music Player
-    const musicToggle = document.getElementById('music-toggle');
-    const musicStatus = document.getElementById('music-status');
-    const bgMusic = document.getElementById('bg-music');
-    musicToggle.onclick = function() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        musicStatus.innerText = "Music On";
-        musicToggle.innerHTML = '<i class="fa fa-volume-up"></i>';
-      } else {
-        bgMusic.pause();
-        musicStatus.innerText = "Music Off";
-        musicToggle.innerHTML = '<i class="fa fa-volume-mute"></i>';
-      }
-    };
-    // Try autoplay after DOM loaded, fallback is user clicks toggle
-    window.addEventListener('DOMContentLoaded', () => {
-      bgMusic.play().catch(()=>{});
-    });
-
-    // Subtle animated background (circles)
-    const canvas = document.getElementById('bg-animation');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    // Animate
-    let circles = [];
-    for (let i=0;i<24;i++) {
-      circles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: 15+Math.random()*42,
-        dx: -0.5+Math.random(),
-        dy: -0.5+Math.random(),
-        c: `rgba(94,234,212,${.14+Math.random()*.1})`
-      });
-    }
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      for (let c of circles) {
-        ctx.beginPath();
-        ctx.arc(c.x, c.y, c.r, 0, Math.PI*2);
-        ctx.fillStyle = c.c;
-        ctx.fill();
-        c.x += c.dx; c.y += c.dy;
-        if (c.x<0||c.x>canvas.width) c.dx*=-1;
-        if (c.y<0||c.y>canvas.height) c.dy*=-1;
-      }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
-</body>
-  </html>
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind or want to collaborate? Feel free to reach out!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>I'm available for freelance work and collaborations. If you have any questions about my projects or services, don't hesitate to contact me.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/pkdriller" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://wa.me/yourwhatsappnumber" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://twitter.com/pkdriller" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/pkdriller" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/pkdriller" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    
+                    <a href="https://wa.me/yourwhatsappchannel" class="btn btn-accent">Join WhatsApp Channel</a>
+                
