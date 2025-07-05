@@ -3,606 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pkdriller - Official Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Pkdriller Official Website</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary: #6c63ff;
-            --dark: #1e1e2c;
-            --light: #f5f5f7;
-            --secondary: #4a4a4a;
-            --accent: #ff6584;
+            --primary: #003049;
+            --secondary: #f77f00;
+            --accent: #fcbf49;
+            --bg: #f8f8f8;
+            --text: #222;
+            --card-bg: #fff;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
+        * { box-sizing: border-box; }
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', Arial, sans-serif;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 100;
+            background: var(--primary);
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            border-bottom: 6px solid var(--accent);
         }
-        
-        nav {
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0 0;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin-top: 1rem;
+        }
+
+        .social-links {
+            margin: 1.5rem 0 0.5rem 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            justify-content: center;
+            gap: 1.5rem;
         }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
+        .social-links a {
+            color: var(--secondary);
+            font-size: 2rem;
+            transition: color 0.2s;
         }
-        
-        .logo span {
+        .social-links a:hover {
             color: var(--accent);
         }
-        
-        .nav-links {
+
+        .contact-btns {
             display: flex;
-            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
         }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--secondary);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .hero {
-            padding: 150px 0 100px;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            color: var(--secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .hero-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: white;
+        .contact-btns a {
+            background: var(--secondary);
+            color: #fff;
+            padding: 0.7rem 1.6rem;
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
             border: none;
-            cursor: pointer;
-            margin: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
         }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        .contact-btns a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px) scale(1.04);
         }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--primary);
         }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-accent {
-            background-color: var(--accent);
-        }
-        
-        .btn-accent:hover {
-            box-shadow: 0 10px 20px rgba(255, 101, 132, 0.3);
-        }
-        
-        section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: var(--secondary);
+        .about {
+            background: var(--card-bg);
+            padding: 1.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
             max-width: 700px;
-            margin: 0 auto;
+            margin: 2rem auto 2rem auto;
+            font-size: 1.12rem;
         }
-        
-        .projects {
-            background-color: white;
-        }
-        
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
-        
         .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .project-content {
-            padding: 20px;
-        }
-        
-        .project-content h3 {
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .project-content p {
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .project-links {
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            padding: 1.2rem 1rem 1.5rem 1rem;
             display: flex;
-            gap: 10px;
-        }
-        
-        .about {
-            background-color: var(--light);
-        }
-        
-        .about-content {
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 50px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            min-height: 420px;
         }
-        
-        .about-img {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .project-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.02);
         }
-        
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .skills {
-            margin-top: 30px;
-        }
-        
-        .skill-item {
-            margin-bottom: 20px;
-        }
-        
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 5px;
-        }
-        
-        .contact {
-            background-color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .contact-info p {
-            margin-bottom: 30px;
-            color: var(--secondary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .social-link {
+        .project-img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 1rem;
+            border-radius: 14px;
+            background: var(--bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            transition: all 0.3s;
         }
-        
-        .social-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--secondary);
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
+            margin: 0.7rem 0 0.2rem 0;
             text-align: center;
         }
-        
-        .footer-links {
+        .project-desc {
+            font-size: 1.04rem;
+            margin: 0.4rem 0 1.2rem 0;
+            color: #444;
+            text-align: center;
+        }
+        .project-links {
+            margin-top: auto;
+            width: 100%;
             display: flex;
             justify-content: center;
-            list-style: none;
-            margin-bottom: 30px;
+            gap: 1rem;
         }
-        
-        .footer-links li {
-            margin: 0 15px;
-        }
-        
-        .footer-links a {
-            color: white;
+        .project-links a {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: background 0.2s, color 0.2s;
         }
-        
-        .footer-links a:hover {
-            color: var(--accent);
+        .project-links a:hover {
+            background: var(--secondary);
+            color: #fff;
         }
-        
-        .copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
+        footer {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0 0.5rem 0;
+            margin-top: 3rem;
         }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .about-content, .contact-content {
-                flex-direction: column;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 700px) {
+            header h1 { font-size: 2rem; }
+            .about { padding: 1.2rem 1rem; }
+        }
+        @media (max-width: 500px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card { min-height: 360px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">PK<span>driller</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+        <img src="https://ui-avatars.com/api/?name=Pkdriller&background=fcbf49&color=003049&size=256" alt="Pkdriller Avatar" class="profile-img">
+        <h1>Pkdriller Official Website</h1>
+        <p>Professional Developer • API & Web Solutions Expert • Creator of Unique Tools</p>
+        <div class="social-links">
+            <a href="https://github.com/nexustech1911" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/pkdriller" title="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/pkdriller" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/pkdriller" title="Twitter (X)" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://wa.me/2348100000000" title="WhatsApp Chat" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="contact-btns">
+            <a href="mailto:pkdriller@example.com"><i class="fas fa-envelope"></i> Email Me</a>
+            <a href="https://wa.me/2348100000000?text=Hi%20Pkdriller!%20I%20found%20your%20official%20site." target="_blank"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0023VaD0v2d0aYwJKgk4wU1X" target="_blank"><i class="fas fa-bullhorn"></i> Join WhatsApp Channel</a>
+            <a href="https://github.com/nexustech1911" target="_blank"><i class="fab fa-github"></i> Follow on GitHub</a>
         </div>
     </header>
-
-    <section class="hero" id="home">
-        <div class="container">
-            <img src="https://github.com/pkdriller0/NEXUS-XMD-DATA/raw/refs/heads/main/logo/pkdriller.jpg" alt="Pkdriller" class="hero-img">
-            <h1>Hi, I'm Pkdriller</h1>
-            <p>Full Stack Developer & Creator of Innovative Web Applications and WhatsApp Bots</p>
-            <div>
-                <a href="#contact" class="btn">Contact Me</a>
-                <a href="https://github.com/pkdriller0" class="btn btn-outline">GitHub</a>
-                <a href="https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x" class="btn btn-accent">WhatsApp Channel</a>
-            </div>
+    <main>
+        <div class="about">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                Hi 👋, I'm <strong>Pkdriller</strong> — a passionate developer building modern web apps, automation tools, APIs, WhatsApp bots, and download utilities.<br>
+                I love solving real-world problems through code, delivering unique user experiences with every project.<br>
+                Explore my top projects, follow me on social media, or reach out for collaboration!
+            </p>
         </div>
-    </section>
 
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Projects</h2>
-                <p>Explore my collection of web applications and tools designed to make digital life easier</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://i.imgur.com/8ZQZQ9u.png" alt="Instagram Video Downloader" class="project-img">
-                    <div class="project-content">
-                        <h3>Instagram Video Downloader</h3>
-                        <p>Download high-quality videos from Instagram with just a few clicks. Supports posts, reels, and IGTV.</p>
-                        <div class="https://pk-instagram-downloader.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                        </div>
-                    </div>
+        <h2 class="section-title">My Top Projects</h2>
+        <div class="projects-grid">
+
+            <!-- INSTAGRAM VIDEO DOWNLOADER -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for Instagram Video Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4f9.png" alt="Instagram Video Downloader" width="70" height="70">
                 </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/9QZQZ9u.png" alt="Application Downloader" class="project-img">
-                    <div class="project-content">
-                        <h3>Application Downloader</h3>
-                        <p>Download APK files for Android applications directly from our secure servers.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn">Visit Website</a>
-                        </div>
-                    </div>
+                <div class="project-title">Instagram Video Downloader</div>
+                <div class="project-desc">
+                    Download videos from Instagram quickly and easily. Paste the link, grab any video in seconds, no watermark.
                 </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/7ZQZQ9u.png" alt="Music Downloader" class="project-img">
-                    <div class="project-content">
-                        <h3>Music Downloader</h3>
-                        <p>Download your favorite songs in MP3 format from various platforms.</p>
-                        <div class="https://pk-music-downloader.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/6ZQZQ9u.png" alt="Social Media Downloader" class="project-img">
-                    <div class="project-content">
-                        <h3>Social Media Downloader</h3>
-                        <p>Download videos and media from Facebook, TikTok, Instagram and more.</p>
-                        <div class="https://pkdriller-media-downloader.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/5ZQZQ9u.png" alt="APIs Website" class="project-img">
-                    <div class="project-content">
-                        <h3>APIs Website</h3>
-                        <p>Collection of useful APIs for developers with comprehensive documentation.</p>
-                        <div class="https://pkdriller-apis-three.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/4ZQZQ9u.png" alt="Nexus-XMD WhatsApp Bot" class="project-img">
-                    <div class="project-content">
-                        <h3>Nexus-XMD WhatsApp Bot</h3>
-                        <p>Advanced WhatsApp bot with multiple features for personal and business use.</p>
-                        <div class="https://nexus-bots-web.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Documentation</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://i.imgur.com/3ZQZQ9u.png" alt="Nexus-AI WhatsApp Bot" class="project-img">
-                    <div class="project-content">
-                        <h3>Nexus-AI WhatsApp Bot</h3>
-                        <p>AI-powered WhatsApp bot with natural language processing capabilities.</p>
-                        <div class="https://nexus-bots-web.vercel.app/">
-                            <a href="#" class="btn">Visit Website</a>
-                            <a href="#" class="btn btn-outline">Documentation</a>
-                        </div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://instavid.pkdriller.com" target="_blank">Visit Website</a>
                 </div>
             </div>
+
+            <!-- APPLICATION DOWNLOADER -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for App Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e6.png" alt="Application Downloader" width="70" height="70">
+                </div>
+                <div class="project-title">Application Downloader</div>
+                <div class="project-desc">
+                    Discover and download your favorite Android apps and tools, all in one place. Fast, secure, and always fresh links.
+                </div>
+                <div class="project-links">
+                    <a href="https://apk.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- MUSIC DOWNLOADER -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for Music Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3b5.png" alt="Music Downloader" width="70" height="70">
+                </div>
+                <div class="project-title">Music Downloader</div>
+                <div class="project-desc">
+                    Instantly download music from various platforms. Search by song, artist, or link and get your favorite tracks.
+                </div>
+                <div class="project-links">
+                    <a href="https://music.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- MEDIA DOWNLOAD FROM FACEBOOK -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for Facebook Media Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4f7.png" alt="Facebook Media Downloader" width="70" height="70">
+                </div>
+                <div class="project-title">Facebook Media Downloader</div>
+                <div class="project-desc">
+                    Download Facebook videos and photos with a single click. Clean interface, privacy-first, no logins required.
+                </div>
+                <div class="project-links">
+                    <a href="https://fbmedia.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- TIKTOK DOWNLOADER -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for TikTok Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3ac.png" alt="TikTok Downloader" width="70" height="70">
+                </div>
+                <div class="project-title">TikTok Downloader</div>
+                <div class="project-desc">
+                    Download TikTok videos in HD, watermark-free. Just paste your TikTok link and get the file instantly.
+                </div>
+                <div class="project-links">
+                    <a href="https://tiktok.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- INSTAGRAM DOWNLOADER -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for Instagram Downloader -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f47e.png" alt="Instagram Downloader" width="70" height="70">
+                </div>
+                <div class="project-title">Instagram Downloader</div>
+                <div class="project-desc">
+                    Download Instagram photos, reels, IGTV and more. All-in-one media downloader for Instagram lovers.
+                </div>
+                <div class="project-links">
+                    <a href="https://instadown.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- APIS WEBSITE -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for APIs Website -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bb.png" alt="APIs Website" width="70" height="70">
+                </div>
+                <div class="project-title">APIs Website</div>
+                <div class="project-desc">
+                    Access a suite of free and premium APIs for developers. Documentation, live testing, and easy integration.
+                </div>
+                <div class="project-links">
+                    <a href="https://api.pkdriller.com" target="_blank">Visit Website</a>
+                </div>
+            </div>
+
+            <!-- NEXUS-XMD WHATSAPP BOT -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for WhatsApp Bot -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="NEXUS-XMD WhatsApp Bot" width="70" height="70">
+                </div>
+                <div class="project-title">Nexus-XMD WhatsApp Bot</div>
+                <div class="project-desc">
+                    A multi-purpose WhatsApp bot for automation, group management, and smart utilities. Fast, reliable and always online.
+                </div>
+                <div class="project-links">
+                    <a href="https://wa.me/2348100000000?text=Join%20Nexus-XMD%20Bot" target="_blank">Try Now</a>
+                </div>
+            </div>
+
+            <!-- NEXUS-AI WHATSAPP BOT -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- SVG illustration for AI WhatsApp Bot -->
+                    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="NEXUS-AI WhatsApp Bot" width="70" height="70">
+                </div>
+                <div class="project-title">Nexus-AI WhatsApp Bot</div>
+                <div class="project-desc">
+                    AI-powered WhatsApp bot for smart conversations, automation, and intelligent replies. Available 24/7.
+                </div>
+                <div class="project-links">
+                    <a href="https://wa.me/2348100000000?text=Join%20Nexus-AI%20Bot" target="_blank">Try Now</a>
+                </div>
+            </div>
+
         </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-                <p>Get to know the developer behind these innovative projects</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://i.imgur.com/J6l19xQ.png" alt="About Pkdriller">
-                </div>
-                <div class="about-text">
-                    <h3>Full Stack Developer & Bot Creator</h3>
-                    <p>I'm a passionate developer with expertise in creating web applications and WhatsApp bots that solve real-world problems. My journey in programming started several years ago, and since then I've been constantly learning and building new things.</p>
-                    <p>I specialize in JavaScript, Node.js, Python, and various web technologies. My projects focus on providing value to users through simple yet powerful tools.</p>
-                    
-                    <div class="skills">
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Web Development</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>WhatsApp Bot Development</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>API Development</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>UI/UX Design</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>Have a project in mind or want to collaborate? Feel free to reach out!</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>I'm available for freelance work and collaborations. If you have any questions about my projects or services, don't hesitate to contact me.</p>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/pkdriller0" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/254794146821" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://twitter.com/pkdriller" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://instagram.com/pkdriller" class="https://www.instagram.com/pk_tech01?igsh=MTM0Y2p3ZHpxMXZraA==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100091580206517" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                    
-                    <a href="https://whatsapp.com/channel/0029Vad7YNyJuyA77CtIPX0x" class="btn btn-accent">Join WhatsApp Channel</a>
-                
+    </main>
+    <footer>
+        &copy; 2025 Pkdriller. All rights reserved. &mdash; Crafted with <span style="color: #f77f00;">&#10084;</span> by Pkdriller
+    </footer>
+</body>
+</html>
